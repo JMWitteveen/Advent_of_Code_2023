@@ -1,6 +1,8 @@
 import re
+import os
 
-file_name = 'C:/Users/jmwit/Desktop/Advent_of_Code_2023/Day_1/input.txt'
+current_dir = os.getcwd()
+full_path = os.path.join(current_dir, "input.txt")
 total_value = 0
 
 digit_strings = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
@@ -44,12 +46,11 @@ def get_last_digit(line):
     
     return word_to_digit(match.group(), True)
 
-with open(file_name, 'r') as file:
+with open(full_path, 'r') as file:
     for line in file:
         calibration_value = ""
         calibration_value += get_first_digit(line)
         calibration_value += get_last_digit(line)
         total_value += int(calibration_value)
-        print(f'line: {line}, first: {get_first_digit(line)}, last: {get_last_digit(line)}, total: {total_value}')
 
 print(total_value)
