@@ -26,7 +26,7 @@ maps = []
 convert_txt_to_lists()
 checkpoint = 50000
 increment = checkpoint
-goal = 100000000
+goal = 200000000
 
 for i in range(goal):
     if i > checkpoint:
