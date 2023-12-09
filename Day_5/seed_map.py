@@ -32,7 +32,7 @@ for seed in maps[0][0]:
     for conversion_map in range(1,len(maps)):
         for conversion_range in maps[conversion_map]:
             if int(conversion_range[1]) <= current_value < (int(conversion_range[1]) + int(conversion_range[2])):
-                current_value = int(conversion_range[0]) + (current_value-int(conversion_range[1]))
+                current_value = int(conversion_range[0]) + (current_value - int(conversion_range[1]))
                 break
     final_locations.append(current_value)
 
