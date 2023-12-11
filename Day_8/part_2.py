@@ -11,24 +11,26 @@ def clean_up_line(line):
     return line.replace("\n", "").split(" ")
 
 def determine_poker_hand(line):
-    cards = {}
-
+    cards = {"x": 0}
+    n_jokers = 0
     for card in line:
-        if card in cards:
+        if card == "J":
+            n_jokers += 1
+        elif card in cards:
             cards[card] += 1
         else:
             cards[card] = 1
     sorted_keys = sorted(cards, key=lambda x: cards[x], reverse=True)
-        
-    if cards[sorted_keys[0]] == 5:      #five of a kind
+    
+    if cards[sorted_keys[0]] + n_jokers >= 5:      #five of a kind
         return 6
-    if cards[sorted_keys[0]] == 4:      #four of a kind
+    if cards[sorted_keys[0]] + n_jokers >= 4:      #four of a kind
         return 5
-    if cards[sorted_keys[0]] == 3: 
+    if cards[sorted_keys[0]] + n_jokers >= 3: 
         if cards[sorted_keys[1]] == 2:  #full house
             return 4
         return 3                        #three of a kind
-    if cards[sorted_keys[0]] == 2:
+    if cards[sorted_keys[0]] + n_jokers >= 2:
         if cards[sorted_keys[1]] == 2:  #2 pair
             return 2
         return 1                        #pair
@@ -44,7 +46,7 @@ def sort_hands_by_poker_score():
     return poker_hands
 
 def custom_sort_key(card):
-    order = "AKQJT98765432"
+    order = "AKQT98765432J"
     return [order.index(c) for c in card[0]]
 
 sorted_poker_hands = sort_hands_by_poker_score()
@@ -57,7 +59,6 @@ for x, hands in enumerate(sorted_poker_hands):
     sorted_poker_hands[x] = sorted(sorted_poker_hands[x], key=custom_sort_key, reverse=True)
     for hand in sorted_poker_hands[x]:
         winnings = current_rank * int(hand[1])
-        print(f'Winnings: {winnings}, rank: {current_rank}, bid: {int(hand[1])}')
         total_value += winnings
         current_rank += 1
 
