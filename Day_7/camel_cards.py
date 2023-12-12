@@ -2,7 +2,7 @@ import re
 import os
 
 current_dir = os.getcwd()
-full_path = os.path.join(current_dir, "input2.txt")
+full_path = os.path.join(current_dir, "input.txt")
 
 with open(full_path, 'r') as file:
     lines = file.readlines()
