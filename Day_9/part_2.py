@@ -15,7 +15,6 @@ def clean_up_line(line):
 
 
 def predict_next_value(values):
-    print(values)
     if all(value == 0 for value in values):
         return 0
 
@@ -28,7 +27,6 @@ def predict_next_value(values):
 for line in lines:
     values = clean_up_line(line)
     result = predict_next_value(values)
-    print(f'PREVIOUS VALUE: {result}')
     total_value += result
 
 print(total_value)
