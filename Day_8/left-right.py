@@ -11,8 +11,6 @@ def clean_up_line(line):
     segments = re.findall(r'[A-Z][A-Z][A-Z]', line)
     return segments[0], (segments[1],segments[2])
 
-
-
 instructions = lines[0].replace('\n', '')
 direction_dict = {}
 
