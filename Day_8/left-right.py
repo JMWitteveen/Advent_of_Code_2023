@@ -28,7 +28,6 @@ direction_counter = 0
 steps_counter = 0
 
 while searching:
-    
     if instructions[direction_counter] == "L":
         current_key = direction_dict[current_key][0]
     else:
@@ -39,6 +38,5 @@ while searching:
         direction_counter = 0
     if current_key == goal_key:
         searching = False
-
 
 print(steps_counter)
