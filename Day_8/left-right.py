@@ -7,14 +7,16 @@ full_path = os.path.join(current_dir, "input.txt")
 with open(full_path, 'r') as file:
     lines = file.readlines()
 
+
 def clean_up_line(line):
     segments = re.findall(r'[A-Z][A-Z][A-Z]', line)
-    return segments[0], (segments[1],segments[2])
+    return segments[0], (segments[1], segments[2])
+
 
 instructions = lines[0].replace('\n', '')
 direction_dict = {}
 
-for i in range(2,len(lines)):
+for i in range(2, len(lines)):
     key, values = clean_up_line(lines[i])
     direction_dict[key] = values
 
